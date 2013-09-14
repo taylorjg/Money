@@ -25,6 +25,23 @@ namespace MoneyExampleTests
         }
 
         [Test]
+        public void TestReduceSum()
+        {
+            var sum = new Sum(Money.Dollar(3), Money.Dollar(4));
+            var bank = new Bank();
+            var actual = bank.Reduce(sum, "USD");
+            Assert.That(actual, Is.EqualTo(Money.Dollar(7)));
+        }
+
+        [Test]
+        public void TestReduceMoney()
+        {
+            var bank = new Bank();
+            var actual = bank.Reduce(Money.Dollar(1), "USD");
+            Assert.That(actual, Is.EqualTo(Money.Dollar(1)));
+        }
+
+        [Test]
         public void TestCurrency()
         {
             Assert.That(Money.Dollar(1).Currency, Is.EqualTo("USD"));

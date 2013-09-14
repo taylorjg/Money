@@ -12,13 +12,28 @@
             return new Money(amount, "CHF");
         }
 
-        private readonly int _amount;
-        private readonly string _currency;
+        public int Amount { get; private set; }
+        public string Currency { get; private set; }
 
         public Money(int amount, string currency)
         {
-            _amount = amount;
-            _currency = currency;
+            Amount = amount;
+            Currency = currency;
+        }
+
+        public virtual Money Times(int multiplier)
+        {
+            return new Money(Amount * multiplier, Currency);
+        }
+
+        public IExpression Plus(Money addend)
+        {
+            return new Sum(this, addend);
+        }
+
+        public Money Reduce(string to)
+        {
+            return this;
         }
 
         public override bool Equals(object obj)
@@ -26,33 +41,18 @@
             var other = (Money)obj;
 
             return
-                _amount.Equals(other._amount) &&
-                Currency.Equals(other._currency);
+                Amount.Equals(other.Amount) &&
+                Currency.Equals(other.Currency);
         }
 
         public override int GetHashCode()
         {
-            return _amount.GetHashCode();
-        }
-
-        public virtual Money Times(int multiplier)
-        {
-            return new Money(_amount * multiplier, _currency);
-        }
-
-        public string Currency
-        {
-            get { return _currency; }
+            return Amount.GetHashCode();
         }
 
         public override string ToString()
         {
-            return string.Format("{0} {1}", _amount, _currency);
-        }
-
-        public IExpression Plus(Money addend)
-        {
-            return new Money(_amount + addend._amount, _currency);
+            return string.Format("{0} {1}", Amount, Currency);
         }
     }
 }
