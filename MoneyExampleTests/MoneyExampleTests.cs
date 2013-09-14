@@ -38,5 +38,11 @@ namespace MoneyExampleTests
             Assert.That(Money.Franc(5), Is.Not.EqualTo(Money.Franc(6)));
             Assert.That(Money.Franc(5), Is.Not.EqualTo(Money.Dollar(5)));
         }
+
+        [Test]
+        public void TestDifferentClassEquality()
+        {
+            Assert.That(new Money(10, "CHF"), Is.EqualTo(new Franc(10, "CHF")));
+        }
     }
 }
