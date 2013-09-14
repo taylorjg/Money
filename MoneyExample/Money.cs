@@ -1,6 +1,6 @@
 ﻿namespace MoneyExample
 {
-    public class Money
+    public class Money : IExpression
     {
         public static Money Dollar(int amount)
         {
@@ -27,7 +27,7 @@
 
             return
                 _amount.Equals(other._amount) &&
-                Currency.Equals(other.Currency);
+                Currency.Equals(other._currency);
         }
 
         public override int GetHashCode()
@@ -37,7 +37,7 @@
 
         public virtual Money Times(int multiplier)
         {
-            return new Money(_amount * multiplier, Currency);
+            return new Money(_amount * multiplier, _currency);
         }
 
         public string Currency
@@ -47,7 +47,12 @@
 
         public override string ToString()
         {
-            return string.Format("{0} {1}", _amount, Currency);
+            return string.Format("{0} {1}", _amount, _currency);
+        }
+
+        public IExpression Plus(Money addend)
+        {
+            return new Money(_amount + addend._amount, _currency);
         }
     }
 }

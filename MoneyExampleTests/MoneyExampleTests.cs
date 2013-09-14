@@ -15,6 +15,16 @@ namespace MoneyExampleTests
         }
 
         [Test]
+        public void TestSimpleAddition()
+        {
+            var five = Money.Dollar(5);
+            var sum = five.Plus(five);
+            var bank = new Bank();
+            var reduced = bank.Reduce(sum, "USD");
+            Assert.That(reduced, Is.EqualTo(Money.Dollar(10)));
+        }
+
+        [Test]
         public void TestCurrency()
         {
             Assert.That(Money.Dollar(1).Currency, Is.EqualTo("USD"));
