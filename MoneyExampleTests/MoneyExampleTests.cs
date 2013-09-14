@@ -36,6 +36,30 @@ namespace MoneyExampleTests
         }
 
         [Test]
+        public void TestSumPlusMoney()
+        {
+            IExpression fiveDollars = Money.Dollar(5);
+            IExpression tenFrancs = Money.Franc(10);
+            var bank = new Bank();
+            bank.AddRate("CHF", "USD", 2);
+            IExpression sum = new Sum(fiveDollars, tenFrancs).Plus(fiveDollars);
+            var actual = bank.Reduce(sum, "USD");
+            Assert.That(actual, Is.EqualTo(Money.Dollar(15)));
+        }
+
+        [Test]
+        public void TestSumTimes()
+        {
+            IExpression fiveDollars = Money.Dollar(5);
+            IExpression tenFrancs = Money.Franc(10);
+            var bank = new Bank();
+            bank.AddRate("CHF", "USD", 2);
+            IExpression sum = new Sum(fiveDollars, tenFrancs).Times(2);
+            var actual = bank.Reduce(sum, "USD");
+            Assert.That(actual, Is.EqualTo(Money.Dollar(20)));
+        }
+
+        [Test]
         public void TestReduceSum()
         {
             var sum = new Sum(Money.Dollar(3), Money.Dollar(4));

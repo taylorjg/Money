@@ -19,12 +19,12 @@
 
         public IExpression Times(int multiplier)
         {
-            throw new System.NotImplementedException();
+            return new Sum(Augend.Times(multiplier), Addend.Times(multiplier));
         }
 
         public IExpression Plus(IExpression addend)
         {
-            throw new System.NotImplementedException();
+            return new Sum(this, addend);
         }
     }
 }

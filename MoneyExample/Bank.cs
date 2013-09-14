@@ -5,6 +5,7 @@ namespace MoneyExample
 {
     public class Bank
     {
+        // I have used a Tuple<string, string> here instead of creating a Pair class.
         private readonly IDictionary<Tuple<string, string>, int> _rates = new Dictionary<Tuple<string, string>, int>();
 
         public Money Reduce(IExpression source, string to)
