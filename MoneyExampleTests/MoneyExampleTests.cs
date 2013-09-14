@@ -10,8 +10,10 @@ namespace MoneyExampleTests
         public void TestMultiplication()
         {
             var five = new Dollar(5);
-            five.Times(2);
-            Assert.That(five.amount, Is.EqualTo(10));
+            var product = five.Times(2);
+            Assert.That(product.amount, Is.EqualTo(10));
+            product = five.Times(3);
+            Assert.That(product.amount, Is.EqualTo(15));
         }
     }
 }
