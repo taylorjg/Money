@@ -29,6 +29,7 @@ namespace MoneyExampleTests
             Assert.That(new Dollar(5), Is.Not.EqualTo(new Dollar(6)));
             Assert.That(new Franc(5), Is.EqualTo(new Franc(5)));
             Assert.That(new Franc(5), Is.Not.EqualTo(new Franc(6)));
+            Assert.That(new Franc(5), Is.Not.EqualTo(new Dollar(5)));
         }
     }
 }
