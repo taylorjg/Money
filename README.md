@@ -25,3 +25,9 @@ Following are a few of my favourite bits from the book.
 
 ---
 
+"we would be one step closer to eliminating the subclasses if there were fewer references to the subclasses directly. We can introduce a factory method in Money that returns a Dollar."
+
+(page 36)
+
+---
+
