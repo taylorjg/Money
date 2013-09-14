@@ -23,6 +23,13 @@ namespace MoneyExampleTests
         }
 
         [Test]
+        public void TestCurrency()
+        {
+            Assert.That(Money.Dollar(1).Currency, Is.EqualTo("USD"));
+            Assert.That(Money.Franc(1).Currency, Is.EqualTo("CHF"));
+        }
+
+        [Test]
         public void TestEquality()
         {
             Assert.That(Money.Dollar(5), Is.EqualTo(Money.Dollar(5)));

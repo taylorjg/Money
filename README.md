@@ -31,3 +31,9 @@ Following are a few of my favourite bits from the book.
 
 ---
 
+"This is the kind of tuning you will be doing constantly with TDD. Are the teeny-tiny steps feeling restrictive? Take bigger steps. Are you feeling a little unsure? Take smaller steps. TDD is a steering process - a little this way, a little that way. There is no right step size, now and forever."
+
+(page 42)
+
+---
+
