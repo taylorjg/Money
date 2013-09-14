@@ -15,6 +15,14 @@ namespace MoneyExampleTests
         }
 
         [Test]
+        public void TestFrancMultiplication()
+        {
+            var five = new Franc(5);
+            Assert.That(five.Times(2), Is.EqualTo(new Franc(10)));
+            Assert.That(five.Times(3), Is.EqualTo(new Franc(15)));
+        }
+
+        [Test]
         public void TestEquality()
         {
             Assert.That(new Dollar(5), Is.EqualTo(new Dollar(5)));
