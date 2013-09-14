@@ -2,16 +2,27 @@
 {
     public class Dollar
     {
-        public int amount;
+        public readonly int Amount;
 
         public Dollar(int amount)
         {
-            this.amount = amount;
+            Amount = amount;
         }
 
         public Dollar Times(int multiplier)
         {
-            return new Dollar(amount * multiplier);
+            return new Dollar(Amount * multiplier);
+        }
+
+        public override bool Equals(object obj)
+        {
+            var otherDollar = (Dollar)obj;
+            return Amount == otherDollar.Amount;
+        }
+
+        public override int GetHashCode()
+        {
+            return Amount.GetHashCode();
         }
     }
 }
