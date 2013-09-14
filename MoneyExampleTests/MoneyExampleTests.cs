@@ -42,6 +42,22 @@ namespace MoneyExampleTests
         }
 
         [Test]
+        public void TestReduceMoneyDifferentCurrency()
+        {
+            var bank = new Bank();
+            bank.AddRate("CHF", "USD", 2);
+            var actual = bank.Reduce(Money.Franc(2), "USD");
+            Assert.That(actual, Is.EqualTo(Money.Dollar(1)));
+        }
+
+        [Test]
+        public void TestIdentityRate()
+        {
+            var actual = new Bank().Rate("USD", "USD");
+            Assert.That(actual, Is.EqualTo(1));
+        }
+
+        [Test]
         public void TestCurrency()
         {
             Assert.That(Money.Dollar(1).Currency, Is.EqualTo("USD"));
