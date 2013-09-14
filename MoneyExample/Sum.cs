@@ -2,19 +2,29 @@
 {
     public class Sum : IExpression
     {
-        public Sum(Money augend, Money addend)
+        public Sum(IExpression augend, IExpression addend)
         {
             Augend = augend;
             Addend = addend;
         }
 
-        public Money Augend;
-        public Money Addend;
+        public IExpression Augend;
+        public IExpression Addend;
 
         public Money Reduce(Bank bank, string to)
         {
-            var amount = Augend.Amount + Addend.Amount;
+            var amount = Augend.Reduce(bank, to).Amount + Addend.Reduce(bank, to).Amount;
             return new Money(amount, to);
+        }
+
+        public IExpression Times(int multiplier)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IExpression Plus(IExpression addend)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

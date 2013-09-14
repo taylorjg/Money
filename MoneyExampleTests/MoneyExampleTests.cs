@@ -25,6 +25,17 @@ namespace MoneyExampleTests
         }
 
         [Test]
+        public void TestMixedAddition()
+        {
+            IExpression fiveDollars = Money.Dollar(5);
+            IExpression tenFrancs = Money.Franc(10);
+            var bank = new Bank();
+            bank.AddRate("CHF", "USD", 2);
+            var actual = bank.Reduce(fiveDollars.Plus(tenFrancs), "USD");
+            Assert.That(actual, Is.EqualTo(Money.Dollar(10)));
+        }
+
+        [Test]
         public void TestReduceSum()
         {
             var sum = new Sum(Money.Dollar(3), Money.Dollar(4));
