@@ -3,6 +3,12 @@ Following are a few of my favourite bits from the book.
 
 ---
 
+"We'll make a to-do list to remind us wat we need to do, to keep us focused, and to tell us when we are finished."
+
+(page 4)
+
+---
+
 * Fake It - Return a constant and gradually replace constants with variables until you have the real code.
 * Use Obvious Implementation - Type in the real implementation.
 
